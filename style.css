@@ -1,0 +1,403 @@
+/* Importação de Fontes Premium */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* --- VARIÁVEIS DE TEMA: ESCURO (PADRÃO) --- */
+:root {
+    --bg-main: #08090c;
+    --bg-card: rgba(18, 20, 28, 0.75);
+    --bg-card-hover: rgba(26, 29, 41, 0.85);
+    
+    --gold-primary: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+    
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    --border-subtle: rgba(212, 175, 55, 0.15);
+    --border-highlight: rgba(212, 175, 55, 0.4);
+    
+    --shadow-color: rgba(0, 0, 0, 0.7);
+    --btn-text: #f3e5ab;
+    --btn-hover-text: #000000;
+}
+
+/* --- VARIÁVEIS DE TEMA: CLARO --- */
+[data-theme="light"] {
+    --bg-main: #f4f5f7;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-card-hover: rgba(255, 255, 255, 1);
+    
+    --gold-primary: #b8860b;
+    --gold-light: #8b6508;
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #8b6508 100%);
+    
+    --text-primary: #1e293b;
+    --text-muted: #64748b;
+    
+    --border-subtle: rgba(184, 134, 11, 0.2);
+    --border-highlight: rgba(184, 134, 11, 0.5);
+    
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --btn-text: #b8860b;
+    --btn-hover-text: #ffffff;
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   Botão de Alternância de Tema (Toggle)
+   ========================================================================== */
+
+.theme-toggle-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+}
+
+.theme-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    border-color: var(--border-highlight);
+    transform: scale(1.05);
+}
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.5s ease;
+}
+
+.theme-btn:hover svg {
+    transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   Cabeçalho Editorial
+   ========================================================================== */
+
+.cabecalho {
+    padding: 70px 24px 40px;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--bg-card);
+    color: var(--gold-light);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 20px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+}
+
+#titulo {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+}
+
+.subtitulo {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Container Principal & Grids
+   ========================================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px 100px;
+    width: 100%;
+    flex: 1;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 32px;
+}
+
+/* ==========================================================================
+   Cards de Alta Costura
+   ========================================================================== */
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 15px 35px var(--shadow-color);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: var(--bg-card-hover);
+    border-color: var(--border-highlight);
+    box-shadow: 0 25px 50px var(--shadow-color);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-image-wrapper img {
+    transform: scale(1.06);
+}
+
+.card-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 300;
+    margin-bottom: 28px;
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* Botão Luxuoso */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--btn-text);
+    border: 1px solid var(--border-subtle);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--gold-gradient);
+    color: var(--btn-hover-text);
+    border-color: transparent;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Páginas Internas de Biografia
+   ========================================================================== */
+
+.menu-navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+.nav-links-pioneiras {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    border-color: var(--border-subtle);
+}
+
+.nav-link.active {
+    color: var(--gold-light);
+    background: var(--bg-card);
+    border-color: var(--border-highlight);
+}
+
+.perfil-detalhe {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 48px;
+    backdrop-filter: blur(20px);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 48px;
+    align-items: start;
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.perfil-imagem-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+
+.perfil-img {
+    width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: cover;
+    display: block;
+}
+
+.perfil-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.perfil-bio .destaque {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    border-left: 2px solid var(--gold-primary);
+    padding-left: 20px;
+}
+
+.perfil-bio strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Rodapé Elegante
+   ========================================================================== */
+
+.rodape {
+    border-top: 1px solid var(--border-subtle);
+    padding: 50px 24px;
+    text-align: center;
+    background: var(--bg-card);
+}
+
+.rodape-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.rodape strong {
+    color: var(--gold-light);
+    font-weight: 500;
+}
+
+.rodape a {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.localizacao {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+@media (max-width: 868px) {
+    .perfil-detalhe {
+        grid-template-columns: 1fr;
+        padding: 28px;
+        gap: 32px;
+    }
+    .menu-navegacao {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
